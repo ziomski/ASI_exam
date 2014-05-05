@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/images/stylesheets, vendor/images/stylesheets,
+ * or vendor/images/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+ 
+.item{
+	display:inline-block;
+	min-height:250px !important;
+	min-width:300px  !important;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+    margin-left:1px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 7px 7px 9px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    7px 7px 9px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         7px 7px 9px 0px rgba(50, 50, 50, 0.75);
+}
+
+.delete{
+	 position:absolute;
+	 margin-left:87%;
+	 margin-top:3%;
+}
+.edit{
+	position:absolute;
+	margin-left:3%;
+	margin-top:3%;
+}
+
+.title{
+	position:absolute;
+	margin-left:40%;
+	margin-top:13%;
+}
+.photo{
+	position:absolute;
+	margin-left:3%;
+	margin-top:10%;
+}
+.description{
+	position:absolute;
+	margin-left:3%;
+	margin-top:50%;
+	
+}
+
+.checked{
+	position:absolute;
+	margin-left:13%;
+	margin-top:1px;	
+}
+
+.item#a{
+	background-color:#d9534f;
+}
+
+.item#b{
+	background-color:#f0ad4e;
+}
+
+.item#c{
+	background-color:#5cb85c;
+}
+
+div#search{
+	margin-top:10px;
+	float:right;
+}
+/* no transition on .isotope container */
+
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+          transition-property:         transform, opacity;
+}
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<h1>THINGS TO DO</h1>
+<head>
+<script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+<script src="http://sigma.ug.edu.pl/~mlesniak/jquery.isotope.js" type="text/javascript"></script> 
+</head>
+<body>
+ 
+<script type="text/javascript">
+
+$(function(){
+  $('#container').isotope({
+  getSortData : {
+    id : function ( $elem ) {
+      return $elem.find('.priority').text();
+    }
+  }
+});
+	
+$('.sort a').click(function(){
+  var sortName = $(this).attr('href').slice(1);
+  $('#container').isotope({ sortBy : sortName });
+  return false;
+});
+
+  
+  
+  var $container = $('#container'),
+      $body = $('body'),
+      colW = 60,
+      columns = null;
+  
+  $container.isotope({
+    // disable window resizing
+    resizable: false,
+    masonry: {
+      columnWidth: colW
+    }
+  });
+  
+  $(window).smartresize(function(){
+    // check if columns has changed
+    var currentColumns = Math.floor( ( $body.width() -10 ) / colW );
+    if ( currentColumns !== columns ) {
+      // set new column count
+      columns = currentColumns;
+      // apply width to container manually, then trigger relayout
+      $container.width( columns * colW )
+        .isotope('reLayout');
+    }
+    
+  }).smartresize(); // trigger resize to set container width
+  
+});
+ 
+</script>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "MyNotes", "", :class => "navbar-brand" %>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+		<li class="active"><a href='/notes'>HOME</a></li>
+		  <li class="active"><a href='<%= new_note_path %>'>NEW NOTE</a></li>
+		     <li class="dropdown active">
+    		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      		SORT-BY<span class="caret"></span>
+    		</a>
+    		<ul class="dropdown-menu sort">
+				<li><a href='#id'>PRIORITY</a></li>
+				<li class="divider"></li>
+				<li><a href='#random'>RANDOM</a></li>
+				<li class="divider"></li>
+				<li><a href='#original-order'>ORIGINAL</a></li>		
+          	</ul>
+  			</li>
+			<li class="active"><%= link_to "REMOVE DONE",delchecked_path,data: { confirm: 'Are you sure you want to delete all things mark as done?' }%></li>
+			</ul>
+			<div class="col-xs-12 col-md-3" id="search">
+				<%= form_tag notes_path, :method => 'get' do %>			
+				<div class="input-group">
+    			<%= text_field_tag :search, params[:search] ,{ :class => 'form-control' }%>
+				<span class="input-group-btn">
+    			<%= submit_tag "Search", :title => nil, :description => nil, :class => 'btn btn-default' %>
+				</span>
+				</div>
+			<% end %>
+			</div>
+      </div>
+    </div>
+</div>
+<div id='container'>
+<% @notes.each do |note| %>
+      <div class='item' id='<%= note.priority %>'>
+	   <div class="edit">
+	  <%= link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_150_edit.png", :border => 0), edit_note_path(note)  %>
+	  </div>
+	  <div class="delete">
+	  <%= link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_016_bin.png", :border => 0), note, method: :delete, data: { confirm: 	'Are you sure?' } %>
+	   </div>
+	   	<p class='priority' hidden='true'><%= note.priority %><p>
+		<p class='checked' hidden='true'><%= note.checked %><p>
+		 <div class="photo">
+		<p class='image'><%= image_tag note.photo_url.to_s,{ :class => 'img-thumbnail' } %><p>
+		 </div>
+		 <div class="checked">
+		 <%= if note.checked == 'false'
+				 (link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_153_unchecked.png", :border => 0), checked_note_path(note))
+  		  	 end
+		  %>
+		  <%= if note.checked == 'true'
+				 (link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_152_check.png", :border => 0), unchecked_note_path(note))
+  		  	 end
+		  %>
+		  </div>
+		 <div class="title">
+		 <div class="col-xs-6">
+		<h3><%= note.title %></h3>
+		</div>
+		</div>
+		 <div class="description">
+        <%= note.description %>
+		</div>
+      </div>
+<% end %>
+</div>
+<%= will_paginate @notes , renderer: BootstrapPagination::Rails%>
+</body>
+
+<html>
