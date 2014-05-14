@@ -22,3 +22,5 @@ Grupowy projekt zaliczeniowy z Architektury Serwisów Internetowych - 2014r.
 <p>Book 1 > <a href="http://pragprog.com/book/achbd/the-rspec-book">The RSpec Book: Behaviour-Driven Development with RSpec, Cucumber, and Friends</a></p>
 
 <p>Book 2 > <a href="http://pragprog.com/book/rails4/agile-web-development-with-rails">Agile Web Development with Rails</a></p>
+
+<p> Do Pobrania książka z pozycji 1 > <a href="https://www.dropbox.com/s/cufbxgbricc24bv/the_rspec_book.pdf"> Miłej Nauki Panowie></a></p>
