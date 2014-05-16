@@ -75,7 +75,7 @@ $('.sort a').click(function(){
       		SORT-BY<span class="caret"></span>
     		</a>
     		<ul class="dropdown-menu sort">
-				<li><a href='#id'>PRIORITY</a></li>
+				<li><a href='#id' id='sort_pri'>PRIORITY</a></li>
 				<li class="divider"></li>
 				<li><a href='#random'>RANDOM</a></li>
 				<li class="divider"></li>
@@ -113,11 +113,11 @@ $('.sort a').click(function(){
 		 </div>
 		 <div class="checked">
 		 <%= if note.checked == 'false'
-				 (link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_153_unchecked.png", :border => 0), checked_note_path(note))
+				 (link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_153_unchecked.png", :border => 0), check_note_path(note))
   		  	 end
 		  %>
 		  <%= if note.checked == 'true'
-				 (link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_152_check.png", :border => 0), unchecked_note_path(note))
+				 (link_to image_tag("http://sigma.ug.edu.pl/~mlesniak/glyphicons/glyphicons_152_check.png", :border => 0), uncheck_note_path(note))
   		  	 end
 		  %>
 		  </div>

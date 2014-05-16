@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :check, :uncheck]
 
   # GET /notes
   # GET /notes.json
@@ -28,6 +28,10 @@ class NotesController < ApplicationController
 	
 	respond_to do |format|
       if @note.save
+	  	if @note.email != nil 
+			RememeberMailer.remember_send(@note).deliver 
+		else
+		end
         format.html {  redirect_to notes_url }
         format.json { render action: 'show', status: :created, location: @note }
       else
@@ -53,20 +57,18 @@ class NotesController < ApplicationController
   
   # GET /notes/1
   # GET /notes/1.json
-   def checked
-    note = Note.find(params[:id])
-    note.checked = 'true'
-    note.save
+   def check
+    @note.checked = 'true'
+    @note.save
 
     redirect_to notes_url
   end
   
   # GET /notes/1
   # GET /notes/1.json
-   def unchecked
-    note = Note.find(params[:id])
-    note.checked = 'false'
-    note.save
+   def uncheck
+    @note.checked = 'false'
+    @note.save
 
     redirect_to notes_url
   end
@@ -105,6 +107,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:priority, :title, :description, :photo, :remote_photo_url, :checked)
+      params.require(:note).permit(:priority, :title, :description, :photo, :remote_photo_url, :checked, :email, :confirm)
     end
 end

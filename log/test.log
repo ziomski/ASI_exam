@@ -1,0 +1,807 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (35.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:51 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:51 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes/2/edit" for 127.0.0.1 at 2014-05-16 14:20:51 +0200
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered notes/_form.html.erb (142.1ms)
+  Rendered notes/edit.html.erb within layouts/application (182.1ms)
+Completed 200 OK in 589ms (Views: 581.1ms | ActiveRecord: 1.0ms)
+Started PATCH "/notes/2" for 127.0.0.1 at 2014-05-16 14:20:52 +0200
+Processing by NotesController#update as HTML
+  Parameters: {"utf8"=>"✓", "note"=>{"priority"=>"a", "checked"=>"false", "title"=>"This is a test title", "remote_photo_url"=>"", "description"=>"Editing Test", "confirm"=>"0"}, "commit"=>"Update Note", "id"=>"2"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSQL (2.0ms)[0m  UPDATE "notes" SET "priority" = ?, "description" = ?, "photo" = ?, "checked" = ?, "confirm" = ?, "updated_at" = ? WHERE "notes"."id" = 2  [["priority", "a"], ["description", "Editing Test"], ["photo", nil], ["checked", "false"], ["confirm", "0"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/notes
+Completed 302 Found in 17ms (ActiveRecord: 2.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:52 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 61ms (Views: 57.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes/2/edit" for 127.0.0.1 at 2014-05-16 14:20:52 +0200
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  Rendered notes/_form.html.erb (11.0ms)
+  Rendered notes/edit.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 57ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title1"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title2"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title3"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title4"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title5"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title6"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:52 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title7"], ["updated_at", Fri, 16 May 2014 12:20:52 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes?page=2" for 127.0.0.1 at 2014-05-16 14:20:52 +0200
+Processing by NotesController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 6
+  Rendered notes/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 49ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (2.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:53 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:53 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes/2/check" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#check as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  UPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2  [["checked", "true"], ["updated_at", Fri, 16 May 2014 12:20:53 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/notes
+Completed 302 Found in 8ms (ActiveRecord: 3.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+Started GET "/notes/2/uncheck" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#uncheck as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2[0m  [["checked", "false"], ["updated_at", Fri, 16 May 2014 12:20:53 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/notes
+Completed 302 Found in 8ms (ActiveRecord: 1.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0[0m
+  Rendered notes/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36m (2.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0[0m
+  Rendered notes/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:53 UTC +00:00], ["description", "Test Test Test Test"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:53 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0[0m
+  Rendered notes/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+Started GET "/notes/2/check" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#check as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  UPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2  [["checked", "true"], ["updated_at", Fri, 16 May 2014 12:20:53 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/notes
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 48ms (Views: 45.0ms | ActiveRecord: 0.0ms)
+Started GET "/delchecked" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#delchecked as HTML
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = ?  [["id", 2]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/notes
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 44ms (Views: 40.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (1.0ms)[0m  begin transaction
+Started GET "/notes/new" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#new as HTML
+  Rendered notes/_form.html.erb (10.0ms)
+  Rendered notes/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 60ms (Views: 59.0ms | ActiveRecord: 0.0ms)
+Started POST "/notes" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "note"=>{"priority"=>"a", "checked"=>"false", "title"=>"My Note", "remote_photo_url"=>"", "description"=>"Test Test Test Test", "confirm"=>"0"}, "commit"=>"Create Note"}
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("checked", "confirm", "created_at", "description", "photo", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["checked", "false"], ["confirm", "0"], ["created_at", Fri, 16 May 2014 12:20:53 UTC +00:00], ["description", "Test Test Test Test"], ["photo", nil], ["priority", "a"], ["title", "My Note"], ["updated_at", Fri, 16 May 2014 12:20:53 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/notes
+Completed 302 Found in 11ms (ActiveRecord: 3.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:53 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 142ms (Views: 42.0ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Started GET "/notes/new" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#new as HTML
+  Rendered notes/_form.html.erb (9.0ms)
+  Rendered notes/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 44ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:54 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:54 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/notes/2/check" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#check as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  UPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2  [["checked", "true"], ["updated_at", Fri, 16 May 2014 12:20:54 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/notes
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+Started GET "/notes" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 47ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:54 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:54 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Started DELETE "/notes/2" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/notes
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0[0m
+  Rendered notes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 43ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.9ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.9ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:54 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test1"], ["updated_at", Fri, 16 May 2014 12:20:54 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:54 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test2"], ["updated_at", Fri, 16 May 2014 12:20:54 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0
+  Rendered notes/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 46ms (Views: 42.0ms | ActiveRecord: 1.0ms)
+Started GET "/notes?utf8=%E2%9C%93&search=test1&commit=Search" for 127.0.0.1 at 2014-05-16 14:20:54 +0200
+Processing by NotesController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"test1", "commit"=>"Search"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE (lower(title) LIKE '%test1%' OR description LIKE '%test1%') LIMIT 6 OFFSET 0[0m
+  Rendered notes/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  Rendered notes/_form.html.erb (13.0ms)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  Rendered notes/_form.html.erb (12.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36m (2.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mNote Load (1.1ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = ?  [["id", 2]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = ?  [["id", 4]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = ?  [["id", 6]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 7]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = ?  [["id", 8]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 9]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = ?  [["id", 10]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 11]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36m (1.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (1.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "priority", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36m (1.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 2[0m  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 3  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 4[0m  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 5  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 6[0m  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 7  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 8[0m  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 9  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 10[0m  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  UPDATE "notes" SET "priority" = ?, "title" = ?, "updated_at" = ? WHERE "notes"."id" = 11  [["priority", "c"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:55 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.9ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by NotesController#uncheck as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.0ms)[0m  [1mUPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2[0m  [["checked", "false"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/notes
+Completed 302 Found in 9ms (ActiveRecord: 3.0ms)
+  [1m[36m (1.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by NotesController#uncheck as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (1.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2  [["checked", "false"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/notes
+Completed 302 Found in 10ms (ActiveRecord: 2.9ms)
+  [1m[35m (1.9ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by NotesController#new as HTML
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+Processing by NotesController#new as HTML
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by NotesController#index as HTML
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" LIMIT 6 OFFSET 0[0m
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mbegin transaction[0m
+Processing by NotesController#index as HTML
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Processing by NotesController#index as HTML
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "notes" ("checked", "created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["checked", "true"], ["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by NotesController#delchecked as HTML
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes"
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (1.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (1.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (1.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 4]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 5]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (1.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 7]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 8]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 8]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 9]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 10]]
+  [1m[35m (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 11]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 11]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/notes
+Completed 302 Found in 31ms (ActiveRecord: 7.1ms)
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35m (1.9ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by NotesController#check as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.9ms)[0m  [1mUPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2[0m  [["checked", "true"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/notes
+Completed 302 Found in 10ms (ActiveRecord: 1.9ms)
+  [1m[36m (2.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by NotesController#check as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mNote Load (0.0ms)[0m  SELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36m (1.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  UPDATE "notes" SET "checked" = ?, "updated_at" = ? WHERE "notes"."id" = 2  [["checked", "true"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/notes
+Completed 302 Found in 11ms (ActiveRecord: 4.0ms)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (2.9ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (1.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 1.0ms)
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "notes" ("created_at", "description", "email", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Fri, 16 May 2014 12:20:56 UTC +00:00], ["description", "This is a test description"], ["email", "test@wp.pl"], ["title", "This is a test title"], ["updated_at", Fri, 16 May 2014 12:20:56 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.0ms)[0m  [1mSELECT "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", "2"]]
+Completed 200 OK in 6ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (2.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+
+Sent mail to test@wp.pl (43.0ms)
+Date: Fri, 16 May 2014 14:20:57 +0200
+From: qm806j@wp.pl
+To: test@wp.pl
+Message-ID: <537602a919bbf_1460111cdc027985@Notebook.mail>
+Subject: Note Remember
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>test@wp.pl,</p>
+
+<p>This is a mail that rememeber you about</p>
+<p>Test title</p>
+<p>Test description</p>
+
+<p>Thank you!</p>
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction

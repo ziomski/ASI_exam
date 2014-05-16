@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329192726) do
+ActiveRecord::Schema.define(version: 20140516065856) do
 
   create_table "notes", force: true do |t|
     t.string   "priority"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140329192726) do
     t.datetime "updated_at"
     t.string   "photo"
     t.string   "checked"
+    t.string   "email"
+    t.string   "confirm"
   end
 
 end

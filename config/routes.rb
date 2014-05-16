@@ -59,13 +59,13 @@ MyNotes::Application.routes.draw do
   
   resources :notes do
     member do
-        get :checked
+        get :check
     end
    end
    
    resources :notes do
     member do
-        get :unchecked
+        get :uncheck
     end
    end
    

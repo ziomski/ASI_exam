@@ -54,14 +54,13 @@ group :production do
    gem 'rails_12factor', '0.0.2'
 end
 
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0.beta'
-end
-
-#gem 'rspec-rails', :group => [:development, :test]
-gem "factory_girl_rails", :group => [:development, :test]
-gem "database_cleaner", :group => :test
-gem "email_spec", :group => :test
-
 gem 'bootstrap-generators', '~> 3.1.1'
 gem 'will_paginate-bootstrap'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'capybara'
+end
+
+gem 'mail'
+gem 'mini-smtp-server'
