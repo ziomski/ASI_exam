@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env)
 
 module MyNotes
   class Application < Rails::Application
+  
+  config.secret_key_key='test'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
