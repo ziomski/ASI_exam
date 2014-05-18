@@ -23,15 +23,15 @@ My Notes <a href = "http://notes-exam.shellyapp.com/notes" >Link do Aplikacji </
 
 ###Instrukcie do odpalenia projektu
 
-*Clone z gita
-*bundle install
-*rake db:migrate
-*rails s
+* git clone https://github.com/Bllade/ASI_exam.git
+* bundle install
+* rake db:migrate
+* rails s
 
 ###Odpalenie testów
 
-*bundle exec rspec
-*wszystkich testów jest 74  
+* bundle exec rspec
+<br> wszystkich testów jest 74  
 
 ### Gemy użyte w aplikacji
 <ul>
