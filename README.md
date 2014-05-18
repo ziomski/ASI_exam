@@ -27,34 +27,34 @@ Grupowy projekt zaliczeniowy z Architektury Serwisów Internetowych - 2014r.
 
 ### Gemy użyte w projekcie
 
-#gem 'rails', '4.0.3'
-#gem 'sqlite3'
-#gem 'sass-rails', '4.0.2'
-#gem 'uglifier', '2.1.1'
-#gem 'coffee-rails', '4.0.1'
-#gem 'jquery-rails', '3.0.4'
-#gem 'turbolinks', '1.1.1'
-#gem 'jbuilder', '1.0.2'
-#gem 'sdoc'
-#gem 'mini_magick', '3.5.0'
-#gem 'carrierwave-dropbox'
-#gem 'pg', '0.15.1'
-#gem 'rails_12factor', '0.0.2'
-#gem 'bootstrap-generators', '~> 3.1.1'
-#gem 'will_paginate-bootstrap'
-#gem 'rspec-rails', '~> 3.0.0.beta'
-#gem 'capybara'
-#gem 'mail'
-#gem 'mini-smtp-server'
+####gem 'rails', '4.0.3'
+####gem 'sqlite3'
+####gem 'sass-rails', '4.0.2'
+####gem 'uglifier', '2.1.1'
+####gem 'coffee-rails', '4.0.1'
+####gem 'jquery-rails', '3.0.4'
+####gem 'turbolinks', '1.1.1'
+#####gem 'jbuilder', '1.0.2'
+####gem 'sdoc'
+####gem 'mini_magick', '3.5.0'
+####gem 'carrierwave-dropbox'
+####gem 'pg', '0.15.1'
+####gem 'rails_12factor', '0.0.2'
+####gem 'bootstrap-generators', '~> 3.1.1'
+####gem 'will_paginate-bootstrap'
+####gem 'rspec-rails', '~> 3.0.0.beta'
+####gem 'capybara'
+####gem 'mail'
+####gem 'mini-smtp-server'
 
-***Instrukcie do odpalenia projektu
+###Instrukcie do odpalenia projektu
 
 Clone z gita
 bundle install
 rake db:migrate
 rails s
 
-***Odpalenie testów
+###Odpalenie testów
 
 bundle exec rspec
 wszystkich testów jest 74  
