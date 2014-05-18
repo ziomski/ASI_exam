@@ -17,35 +17,35 @@ Grupowy projekt zaliczeniowy z Architektury Serwisów Internetowych - 2014r.
 
 * Dodane jQuery Isotope do pozycjonowania karteczek na stronie (responsywność),
 * Dodane sortowanie karteczek po priorytecie każdego zadania (ważne zadania na początku),
-* Do dodawania obrazków użycie gemu 'carrierwave-dropbox' co sprawia, że obrazki są przechowywane na dropboxie lub możliwośc wstawienia obrazków za pomocą adresu URL, 
-* Poprawiłem wygląd formularzy oraz pozostałych stron zwłaszcza index za pomocą gemu 'bootstrap-generators',
+* Do dodawania obrazków użycie *gemu 'carrierwave-dropbox' co sprawia, że obrazki są przechowywane na dropboxie lub możliwośc wstawienia obrazków za pomocą adresu URL, 
+* Poprawiłem wygląd formularzy oraz pozostałych stron zwłaszcza index za pomocą *gemu 'bootstrap-generators',
 * Dodane opcje wyszukiwania karteczek po tytułach jak i opisach,
 * Dodane oznaczanie zadań jako zrobione dzięki czemu można jednym przyciskiem usunąć wszystkie wykonane zadania,
-* Dodane paginacje za pomocą gemu 'will_paginate-bootstrap',
+* Dodane paginacje za pomocą *gemu 'will_paginate-bootstrap',
 * Responsywność wszyskich widoków,
 * Dodane wysyłanie powiadomień na adres e-mail.
 
-### Gemy użyte w projekcie
+### *gemy użyte w projekcie
 
-####gem 'rails', '4.0.3'
-####gem 'sqlite3'
-####gem 'sass-rails', '4.0.2'
-####gem 'uglifier', '2.1.1'
-####gem 'coffee-rails', '4.0.1'
-####gem 'jquery-rails', '3.0.4'
-####gem 'turbolinks', '1.1.1'
-#####gem 'jbuilder', '1.0.2'
-####gem 'sdoc'
-####gem 'mini_magick', '3.5.0'
-####gem 'carrierwave-dropbox'
-####gem 'pg', '0.15.1'
-####gem 'rails_12factor', '0.0.2'
-####gem 'bootstrap-generators', '~> 3.1.1'
-####gem 'will_paginate-bootstrap'
-####gem 'rspec-rails', '~> 3.0.0.beta'
-####gem 'capybara'
-####gem 'mail'
-####gem 'mini-smtp-server'
+*gem 'rails', '4.0.3'
+*gem 'sqlite3'
+*gem 'sass-rails', '4.0.2'
+*gem 'uglifier', '2.1.1'
+*gem 'coffee-rails', '4.0.1'
+*gem 'jquery-rails', '3.0.4'
+*gem 'turbolinks', '1.1.1'
+*gem 'jbuilder', '1.0.2'
+*gem 'sdoc'
+*gem 'mini_magick', '3.5.0'
+*gem 'carrierwave-dropbox'
+*gem 'pg', '0.15.1'
+*gem 'rails_12factor', '0.0.2'
+*gem 'bootstrap-generators', '~> 3.1.1'
+*gem 'will_paginate-bootstrap'
+*gem 'rspec-rails', '~> 3.0.0.beta'
+*gem 'capybara'
+*gem 'mail'
+*gem 'mini-smtp-server'
 
 ###Instrukcie do odpalenia projektu
 
