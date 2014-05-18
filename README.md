@@ -11,56 +11,52 @@ Grupowy projekt zaliczeniowy z Architektury Serwisów Internetowych - 2014r.
 * Arkadiusz Dąbrowski
 * Michał Leśniak
 
-## Link do rozwijanej aplikacji
-<a href="https://github.com/mlesniak91/my_notes/blob/master/Readme.md"> Kliknij tutaj </a>
-### My Notes - Lista
+## Opis Projektu
+MyNotes - jest rozwinięciem projektu zaliczeniowego laboratoria Michała Leśniak. 
+<a href="https://github.com/mlesniak91/my_notes"> Link do projektu </a>
 
-* Dodane jQuery Isotope do pozycjonowania karteczek na stronie (responsywność),
-* Dodane sortowanie karteczek po priorytecie każdego zadania (ważne zadania na początku),
-* Do dodawania obrazków użycie *gemu 'carrierwave-dropbox' co sprawia, że obrazki są przechowywane na dropboxie lub możliwośc wstawienia obrazków za pomocą adresu URL, 
-* Poprawiłem wygląd formularzy oraz pozostałych stron zwłaszcza index za pomocą *gemu 'bootstrap-generators',
-* Dodane opcje wyszukiwania karteczek po tytułach jak i opisach,
-* Dodane oznaczanie zadań jako zrobione dzięki czemu można jednym przyciskiem usunąć wszystkie wykonane zadania,
-* Dodane paginacje za pomocą *gemu 'will_paginate-bootstrap',
-* Responsywność wszyskich widoków,
-* Dodane wysyłanie powiadomień na adres e-mail.
 
 ### Shelly Cloud
-<a href = "http://notes-exam.shellyapp.com/notes" >Aplikacja </a>
+My Notes<a href = "http://notes-exam.shellyapp.com/notes" >Link do Aplikacji </a>
 
-### *gemy użyte w projekcie
 
-*gem 'rails', '4.0.3'
-*gem 'sqlite3'
-*gem 'sass-rails', '4.0.2'
-*gem 'uglifier', '2.1.1'
-*gem 'coffee-rails', '4.0.1'
-*gem 'jquery-rails', '3.0.4'
-*gem 'turbolinks', '1.1.1'
-*gem 'jbuilder', '1.0.2'
-*gem 'sdoc'
-*gem 'mini_magick', '3.5.0'
-*gem 'carrierwave-dropbox'
-*gem 'pg', '0.15.1'
-*gem 'rails_12factor', '0.0.2'
-*gem 'bootstrap-generators', '~> 3.1.1'
-*gem 'will_paginate-bootstrap'
-*gem 'rspec-rails', '~> 3.0.0.beta'
-*gem 'capybara'
-*gem 'mail'
-*gem 'mini-smtp-server'
 
 ###Instrukcie do odpalenia projektu
-
-Clone z gita
-bundle install
-rake db:migrate
-rails s
+</br>
+Clone z gita</br>
+bundle install</br>
+rake db:migrate</br>
+rails s</br>
 
 ###Odpalenie testów
 
-bundle exec rspec
+bundle exec rspec</br></br></br>
 wszystkich testów jest 74  
+
+### Gemy użyte w aplikacji
+<ul>
+<li>gem 'rails', '4.0.3'</li>
+<li>gem 'sqlite3'</li>
+<li>gem 'sass-rails', '4.0.2'</li>
+<li>gem 'uglifier', '2.1.1'</li>
+<li>gem 'coffee-rails', '4.0.1'</li>
+<li>gem 'jquery-rails', '3.0.4'</li>
+<li>gem 'turbolinks', '1.1.1'</li>
+<li>gem 'jbuilder', '1.0.2'</li>
+<li>gem 'sdoc'</li>
+<li>gem 'mini_magick', '3.5.0'</li>
+<li>gem 'carrierwave-dropbox'</li>
+<li>gem 'pg', '0.15.1'</li>
+<li>gem 'rails_12factor', '0.0.2'</li>
+<li>gem 'bootstrap-generators', '~> 3.1.1'</li>
+<li>gem 'will_paginate-bootstrap'</li>
+<li>gem 'rspec-rails', '~> 3.0.0.beta'</li>
+<li>gem 'capybara'</li>
+<li>gem 'mail'</li>
+<li>gem 'mini-smtp-server'</li>
+</ul>
+
+
 
 <h2> Pomoce naukowe </h2>
 <p>Video 1 > <a href="http://railscasts.com/episodes/275-how-i-test">How I test</a> by Ryan Bates</p>
