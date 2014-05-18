@@ -53,7 +53,6 @@ My Notes <a href = "http://notes-exam.shellyapp.com/notes" >Link do Aplikacji </
 <li>gem 'rspec-rails', '~> 3.0.0.beta'</li>
 <li>gem 'capybara'</li>
 <li>gem 'mail'</li>
-<li>gem 'mini-smtp-server'</li>
 </ul>
 
 
