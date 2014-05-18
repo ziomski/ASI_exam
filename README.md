@@ -25,6 +25,9 @@ Grupowy projekt zaliczeniowy z Architektury Serwisów Internetowych - 2014r.
 * Responsywność wszyskich widoków,
 * Dodane wysyłanie powiadomień na adres e-mail.
 
+### Shelly Cloud
+<a href = "http://notes-exam.shellyapp.com/notes" >Aplikacja </a>
+
 ### *gemy użyte w projekcie
 
 *gem 'rails', '4.0.3'
