@@ -17,21 +17,21 @@ MyNotes - jest rozwinięciem projektu zaliczeniowego laboratoria Michała Leśni
 
 
 ### Shelly Cloud
-My Notes<a href = "http://notes-exam.shellyapp.com/notes" >Link do Aplikacji </a>
+My Notes <a href = "http://notes-exam.shellyapp.com/notes" >Link do Aplikacji </a>
 
 
 
 ###Instrukcie do odpalenia projektu
-</br>
-Clone z gita</br>
-bundle install</br>
-rake db:migrate</br>
-rails s</br>
+
+*Clone z gita
+*bundle install
+*rake db:migrate
+*rails s
 
 ###Odpalenie testów
 
-bundle exec rspec</br></br></br>
-wszystkich testów jest 74  
+*bundle exec rspec
+*wszystkich testów jest 74  
 
 ### Gemy użyte w aplikacji
 <ul>
