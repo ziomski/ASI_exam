@@ -1,5 +1,7 @@
 ﻿ASI_exam
 ========
+##Travis
+[![Build Status](https://travis-ci.org/Bllade/ASI_exam.svg?branch=master)](https://travis-ci.org/Bllade/ASI_exam)
 
 ## Noraminofenazonummetanosulfonikumnatrium
 
